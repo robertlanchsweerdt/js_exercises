@@ -1,6 +1,4 @@
 function formatDuration(seconds) {
-  if (seconds === 0) return 'now';
-
   // establish units of time
   const oneMinute = 60;
   const oneHour = oneMinute * 60;
@@ -17,7 +15,6 @@ function formatDuration(seconds) {
   };
 
   // iterate over object and place each time unit sentence into an array
-  const englishArray = [];
   let englishOutput = '';
   const convertToArray = Object.entries(timeObj);
 
@@ -25,47 +22,34 @@ function formatDuration(seconds) {
     // set variables
     let currentKey = convertToArray[i][0];
     let currentValue = convertToArray[i][1];
+    let nextValue = null;
+    let nextIteration = null;
+
+    // set conditional variables if not undefined
+    if (typeof convertToArray[i + 1] != 'undefined') {
+      nextIteration = convertToArray[i + 1];
+      nextValue = convertToArray[i + 1][1];
+    }
 
     // remove 's' from time units if measure is '1
     if (currentValue >= 1) {
-      englishOutput = `${currentValue} ${
+      englishOutput += `${currentValue} ${
         currentValue > 1
           ? currentKey
           : currentKey.slice(0, currentKey.length - 1)
       }`;
 
-      englishArray.push(englishOutput);
-    }
-  }
-
-  // add punctation / 'and' to proper syntax positioning
-  // to create a proper sentence
-  if (englishArray.length === 1) {
-    return englishArray.join(' ');
-  } else if (englishArray.length === 2) {
-    englishArray[0] += ' and ';
-  } else {
-    for (let i = 0; i < englishArray.length; i++) {
-      // if 2nd to last item in array, add 'and' to the word
-      if (englishArray.indexOf(englishArray[i]) === englishArray.length - 2) {
-        englishArray[i] += ' and ';
-        // add a comma if more than 2 words
-        // do not add a comma to the second to last word
-      } else if (
-        englishArray.indexOf(englishArray[i]) !==
-        englishArray.length - 1
-      ) {
-        englishArray[i] += ', ';
+      if (nextIteration && nextValue !== 0 && i === convertToArray.length - 2) {
+        englishOutput += ' and ';
+      } else if (nextIteration && nextValue !== 0) {
+        englishOutput += ', ';
       }
     }
   }
 
-  sendOutput = englishArray.join('');
-
-  return sendOutput;
+  return englishOutput;
 }
 
-console.log(formatDuration(0));
 console.log(formatDuration(1));
 console.log(formatDuration(62));
 console.log(formatDuration(120));
