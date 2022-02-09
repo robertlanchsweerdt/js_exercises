@@ -83,3 +83,28 @@ function sumObjValues(obj) {
 sumObjValues({ a: 1, b: 2, c: 3 }); // Expected 6
 sumObjValues({ j: 9, i: 2, x: 3, z: 4 }); // Expected 18
 sumObjValues({ w: 15, x: 22, y: 13 }); // Expected 50
+
+// Write a function that takes an object with two properties as argument
+// It should return the value of the property with key 'prop-2'
+// Tipp: you might want to use the square brackets property accessor
+function returnArg(obj) {
+  return obj['prop-2'];
+}
+
+returnArg({ one: 1, 'prop-2': 2 }); // Expected 2
+returnArg({ 'prop-2': 'two', prop: 'test' }); // Expected 'two'
+
+// Write a function that takes a number (a) as argument
+// Round a to the 2nd digit after the comma
+// Return the rounded number
+function roundNum(a) {
+  return Math.round((a + Number.EPSILON) * 100) / 100;
+
+  // alternate
+  //return Number(a.toFixed(2));
+}
+
+roundNum(2.12397); // Expected 2.12
+roundNum(3.136); // Expected 3.14
+roundNum(1.12397); // Expected 1.12
+roundNum(26.1379); // Expected 26.14

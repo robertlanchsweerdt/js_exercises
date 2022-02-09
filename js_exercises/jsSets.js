@@ -4,6 +4,11 @@ function setValue(set, val) {
   return set.has(val);
 }
 
+setValue(new Set([1, 2, 3]), 2); // Expected true
+setValue(new Set([123]), 2); // Expected false
+setValue(new Set(['1', '2', '3']), '2'); // Expected true
+setValue(new Set('123'), '2'); // Expected true
+
 // Write a function that takes a Set as argument
 // Convert the Set to an Array
 // Return the Array
@@ -11,12 +16,19 @@ function convertSet(set) {
   return [...set];
 }
 
-setValue(new Set([1, 2, 3]), 2); // Expected true
-setValue(new Set([123]), 2); // Expected false
-setValue(new Set(['1', '2', '3']), '2'); // Expected true
-setValue(new Set('123'), '2'); // Expected true
-
 convertSet(new Set([1, 2, 3])); // Expected [1, 2, 3]
 convertSet(new Set([123])); // Expected [123]
 convertSet(new Set(['1', '2', '3'])); // Expected ['1', '2', '3']
 convertSet(new Set('123')); // Expected ['1', '2', '3']
+
+// Write a function that takes three elements of any type as arguments
+// Create a Set from those elements
+// Return the result
+function createSet(a, b, c) {
+  let mySet = [a, b, c];
+  return new Set(mySet);
+}
+
+createSet(1, 'b', 3); // Expected new Set([1, 'b', 3])
+createSet(NaN, null, false); // Expected new Set([NaN, null, false])
+createSet('a', ['b'], { c: 3 }); // Expected new Set(['a', ['b'], { c: 3 }])
