@@ -56,3 +56,31 @@ function longestStr(arr) {
 
 longestStr(['help', 'me']); // Expected 'help'
 longestStr(['I', 'need', 'candy']); // Expected 'candy'
+
+// Write a function that takes arguments an arbitrary number of arrays
+// It should return an array containing the values of all arrays
+function mergeArrays(...arrays) {
+  return [].concat(...arrays);
+
+  // alternate
+  // return arrays.flat()
+}
+
+mergeArrays([1, 2, 3], [4, 5, 6]); // Expected [1, 2, 3, 4, 5, 6]
+mergeArrays(['a', 'b', 'c'], [4, 5, 6]); // Expected ['a', 'b', 'c', 4, 5, 6]
+mergeArrays([true, true], [1, 2], ['a', 'b']); // Expected [true, true, 1, 2, 'a', 'b']
+
+// Write a function that takes an array as argument
+// It should return true if all elements in the array are equal
+// It should return false otherwise
+function checkArray(arr) {
+  return arr.every((val) => val === arr[0]);
+
+  // alternate
+  // return new Set(arr).size === 1
+}
+
+checkArray([true, true, true, true]); // Expected true
+checkArray(['test', 'test', 'test']); // Expected true
+checkArray([1, 1, 1, 2]); // Expected false
+checkArray(['10', 10, 10, 10]); // Expected false
