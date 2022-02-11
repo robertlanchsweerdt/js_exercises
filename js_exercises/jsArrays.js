@@ -84,3 +84,22 @@ checkArray([true, true, true, true]); // Expected true
 checkArray(['test', 'test', 'test']); // Expected true
 checkArray([1, 1, 1, 2]); // Expected false
 checkArray(['10', 10, 10, 10]); // Expected false
+
+// Write a function that takes an array (a) and a number (b) as arguments
+// Sum up all array elements with a value greater than b
+// Return the sum
+function sumUp(a, b) {
+  const filterArr = a.filter((num) => num > b);
+
+  return filterArr.reduce((prev, curr) => prev + curr, 0);
+
+  // alternative
+  // return a.reduce((sum, cur) => {
+  //   if (cur > b) return sum + cur;
+  //   return sum;
+  // }, 0);
+}
+
+sumUp([1, 2, 3, 4, 5, 6, 7], 2); // Expected 25
+sumUp([-10, -11, -3, 1, -4], -3); // Expected 1
+sumUp([78, 99, 100, 101, 401], 99); // Expected 602

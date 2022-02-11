@@ -108,3 +108,25 @@ roundNum(2.12397); // Expected 2.12
 roundNum(3.136); // Expected 3.14
 roundNum(1.12397); // Expected 1.12
 roundNum(26.1379); // Expected 26.14
+
+// Write a function that takes an array of objects as argument
+// Sort the array by property b in ascending order
+// Return the sorted array
+function sortObj(arr) {
+  console.log(arr);
+
+  return;
+}
+
+sortObj([
+  { a: 1, b: 2 },
+  { a: 5, b: 4 },
+]); // Expected [{a:1,b:2},{a:5,b:4}]
+sortObj([
+  { a: 2, b: 10 },
+  { a: 5, b: 4 },
+]); // Expected [{a:5,b:4},{a:2,b:10}]
+sortObj([
+  { a: 1, b: 7 },
+  { a: 2, b: 1 },
+]); // Expected [{a:2,b:1},{a:1,b:7}]
