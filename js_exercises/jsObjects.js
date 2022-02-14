@@ -113,9 +113,11 @@ roundNum(26.1379); // Expected 26.14
 // Sort the array by property b in ascending order
 // Return the sorted array
 function sortObj(arr) {
-  console.log(arr);
+  const sorted = arr.sort((first, second) => {
+    return first.b - second.b;
+  });
 
-  return;
+  return sorted;
 }
 
 sortObj([
@@ -130,3 +132,30 @@ sortObj([
   { a: 1, b: 7 },
   { a: 2, b: 1 },
 ]); // Expected [{a:2,b:1},{a:1,b:7}]
+
+// Write a function that takes an array of objects and a string as arguments
+// Add a property with key 'continent' and value equal to the string to each of the objects
+// Return the new array of objects
+// Tipp: try not to mutate the original array
+function mutateObj(arr, str) {
+  const newObj = arr.map((obj) => {
+    return { ...obj, continent: str };
+  });
+
+  return newObj;
+}
+
+mutateObj(
+  [
+    { city: 'Tokyo', country: 'Japan' },
+    { city: 'Bangkok', country: 'Thailand' },
+  ],
+  'Asia'
+); // Expected [{ city: 'Tokyo', country: 'Japan', continent: 'Asia' }, { city: 'Bangkok', country: 'Thailand', continent: 'Asia' }]
+mutateObj(
+  [
+    { city: 'Stockholm', country: 'Sweden' },
+    { city: 'Paris', country: 'France' },
+  ],
+  'Europe'
+); // Expected [{ city: 'Stockholm', country: 'Sweden', continent: 'Europe' }, { city: 'Paris', country: 'France', continent: 'Europe' }]

@@ -36,3 +36,13 @@ wholeNum(4); // Expected true
 wholeNum(1.123); // Expected false
 wholeNum(1048); //  Expected true
 wholeNum(10.48); // Expected false
+
+// Write a function that takes a string (a) and a number (n) as argument
+// Return the nth character of 'a'
+function returnNthChar(a, n) {
+  return a.charAt(n - 1);
+}
+
+returnNthChar('abcd', 1); // Expected 'a'
+returnNthChar('zyxbwpl', 5); // Expected 'w'
+returnNthChar('gfedcba', 3); // Expected 'e'
