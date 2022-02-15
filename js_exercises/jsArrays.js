@@ -103,3 +103,32 @@ function sumUp(a, b) {
 sumUp([1, 2, 3, 4, 5, 6, 7], 2); // Expected 25
 sumUp([-10, -11, -3, 1, -4], -3); // Expected 1
 sumUp([78, 99, 100, 101, 401], 99); // Expected 602
+
+// Write a function that takes two arrays as arguments
+// Merge both arrays and remove duplicate values
+// Sort the merge result in ascending order
+// Return the resulting array
+function mergeRemove(a, b) {
+  const newArr = [...new Set([...a, ...b])].sort((x, y) => x - y);
+
+  return newArr;
+}
+
+mergeRemove([1, 2, 3], [3, 4, 5]); // Expected [ 1, 2, 3, 4, 5 ]
+mergeRemove([-10, 22, 333, 42], [-11, 5, 22, 41, 42]); // Expected [ -11, -10, 5, 22, 41,  42, 333]
+
+// Write a function that takes an array with arbitrary elements and a number as arguments
+// Return a new array, the first element should be either the given number itself
+// or zero if the number is smaller than 6
+// The other elements should be the elements of the original array
+// Try not to mutate the original array
+function myFunction(arr, num) {
+  const newArr = [...arr];
+  num < 6 ? newArr.unshift(0) : newArr.unshift(num);
+
+  return newArr;
+}
+
+myFunction([1, 2, 3], 6); // Expected [6,1,2,3]
+myFunction(['a', 'b'], 2); // Expected [0,'a','b']
+myFunction([null, false], 11); // Expected [11,null,false]
