@@ -180,3 +180,18 @@ function mergeCorrect(x, y) {
 
 mergeCorrect({ a: 1, b: 2 }, { c: 3, b: 4, e: 5 }); // Expected { a: 1, b: 2, c: 3, e: 5, d: 4}
 mergeCorrect({ a: 5, b: 4 }, { c: 3, b: 1, e: 2 }); // Expected { a: 5, b: 4, c: 3, e: 2, d: 1}
+
+// Write a function that takes an object as argument
+// Some of the property values contain empty strings
+// Replace empty strings and strings that contain only whitespace with null values
+// Return the resulting object
+function mutateValue(obj) {
+  for (val in obj) {
+    if (obj[val].trim().length === 0) obj[val] = null;
+  }
+  return obj;
+}
+
+mutateValue({ a: 'a', b: 'b', c: '' }); // Expected { a: 'a', b: 'b', c: null }
+mutateValue({ a: '', b: 'b', c: ' ', d: 'd' }); // Expected { a: null, b: 'b', c: null, d: 'd' }
+mutateValue({ a: 'a', b: 'b ', c: ' ', d: '' }); // Expected { a: 'a', b: 'b ', c: null, d: null }

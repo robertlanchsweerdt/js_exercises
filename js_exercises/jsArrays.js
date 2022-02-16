@@ -132,3 +132,23 @@ function myFunction(arr, num) {
 myFunction([1, 2, 3], 6); // Expected [6,1,2,3]
 myFunction(['a', 'b'], 2); // Expected [0,'a','b']
 myFunction([null, false], 11); // Expected [11,null,false]
+
+// Write a function that takes an array of strings as argument
+// Group those strings by their first letter
+// Return an object that contains properties with keys representing first letters
+// The values should be arrays of strings containing only the corresponding strings
+// For example, the array ['Alf', 'Alice', 'Ben'] should be transformed to
+// { a: ['Alf', 'Alice'], b: ['Ben']}
+function arrayToObj(arr) {
+  let obj = {};
+
+  for (val of arr) {
+    const firstLetter = val.charAt(0).toLowerCase();
+    obj[firstLetter] = val;
+  }
+  return obj;
+}
+
+arrayToObj(['Alf', 'Alice', 'Ben']); // Expected { a: ['Alf', 'Alice'], b: ['Ben']}
+arrayToObj(['Ant', 'Bear', 'Bird']); // Expected { a: ['Ant'], b: ['Bear', 'Bird']}
+arrayToObj(['Berlin', 'Paris', 'Prague']); // Expected { b: ['Berlin'], p: ['Paris', 'Prague']}

@@ -29,3 +29,23 @@ function compareDates(a, b) {
 compareDates(new Date('2000/01/01 08:00:00'), new Date('2000/01/01 08:45:00')); // Expected false
 compareDates(new Date('2000/01/01 08:00:00'), new Date('2000/01/01 08:00:00')); // Expected true
 compareDates(new Date('2001/01/01 08:00:00'), new Date('2000/01/01 08:00:00')); // Expected false
+
+// Write a function that takes two date instances as argument
+// It should return true if the difference between the dates is less than or equal to 1 hour
+// It should return false otherwise
+function dateDiff(a, b) {
+  const oneMillisecond = 1000; // 1000 milliseconds in a second
+  const oneMinute = 60; // 60 seconds in a minute
+
+  const timeDiff = b.getTime() - a.getTime();
+  const dayDiff = timeDiff / (oneMillisecond * oneMinute);
+
+  const anotherWay = Math.floor(timeDiff / oneMillisecond / oneMinute);
+
+  return dayDiff <= 60;
+}
+
+dateDiff(new Date('2000/01/01 08:00:00'), new Date('2000/01/01 08:45:00')); // Expected true
+dateDiff(new Date('2000/01/01 09:00:00'), new Date('2000/01/01 08:45:00')); // Expected true
+dateDiff(new Date('2000/01/01 08:00:00'), new Date('2000/01/01 09:45:00')); // Expected false
+dateDiff(new Date('2000/01/01 08:00:00'), new Date('2000/01/01 09:00:00')); // Expected true
