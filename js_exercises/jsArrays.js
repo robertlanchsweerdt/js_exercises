@@ -141,14 +141,35 @@ myFunction([null, false], 11); // Expected [11,null,false]
 // { a: ['Alf', 'Alice'], b: ['Ben']}
 function arrayToObj(arr) {
   let obj = {};
+  const someArr = [];
 
   for (val of arr) {
-    const firstLetter = val.charAt(0).toLowerCase();
-    obj[firstLetter] = val;
+    const currentKey = val.charAt(0).toLowerCase();
+    obj.a = [];
+
+    if (currentKey === val.charAt(0).toLowerCase()) {
+      console.log(val);
+      someArr.push(val);
+    }
   }
+
+  console.log(obj);
+
   return obj;
 }
 
 arrayToObj(['Alf', 'Alice', 'Ben']); // Expected { a: ['Alf', 'Alice'], b: ['Ben']}
 arrayToObj(['Ant', 'Bear', 'Bird']); // Expected { a: ['Ant'], b: ['Bear', 'Bird']}
 arrayToObj(['Berlin', 'Paris', 'Prague']); // Expected { b: ['Berlin'], p: ['Paris', 'Prague']}
+
+// Create a function which returns the number of true values there are in an array.
+
+function countTrue(arg) {
+  return arg.filter((boolean) => boolean === true).length;
+}
+
+countTrue([true, false, false, true, false]); // ➞ 2
+
+countTrue([false, false, false, false]); // ➞ 0
+
+countTrue([]); // ➞ 0
