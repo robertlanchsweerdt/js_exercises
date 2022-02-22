@@ -23,6 +23,11 @@ function domainName(url) {
 
   // alternate 2
   // return url.replace(/(https?:\/\/)?(www\.)?/, '').split('.')[0]
+
+  // alternate 3
+  // url = url.toString().replace('https://', '').replace('http://', '').replace('www.', '');
+
+  // return url.split('.')[0];
 }
 
 console.log(domainName('http://github.com/carbonfive/raygun'));
